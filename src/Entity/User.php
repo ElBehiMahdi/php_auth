@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -91,5 +91,28 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function serialize()
+    {
+        // TODO: Implement serialize() method.
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password,
+        ]);
+    }
+
+    public function unserialize($string)
+    {
+        // TODO: Implement unserialize() method.
+        list(
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password,
+
+            ) = unserialize($string, ['allowed_classes' => false]);
     }
 }
