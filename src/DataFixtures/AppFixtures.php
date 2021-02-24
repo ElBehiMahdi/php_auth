@@ -12,12 +12,7 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        $user = new User();
 
-        $user -> setUsername('admin');
-        $user -> setPassword('');//todo needs encoding first
-        $user -> setEmail('no-reply@wiiw.tn');
-        $manager -> persist($user);
 
 
         $manager->flush();
